@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	"bitbucket.org/kardianos/service"
+	service "github.com/hewei-github/godaemon"
 )
 
 var log service.Logger
@@ -60,15 +60,17 @@ func main() {
 		}
 		return
 	}
-	err = s.Run(func() error {
-		// start
+	// start control
+	startFunc = func() error {
 		go doWork()
 		return nil
-	}, func() error {
-		// stop
+	}
+	// stop control
+	stopFunc = func() error {
 		stopWork()
 		return nil
-	})
+	}
+	err = s.Run(startFunc, stopFunc)
 	if err != nil {
 		s.Error(err.Error())
 	}

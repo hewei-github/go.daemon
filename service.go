@@ -4,7 +4,7 @@
 //
 // Package service provides a simple way to create a system service.
 // Currently supports Windows, Linux/(systemd | Upstart | SysV), and OSX/Launchd.
-package service
+package godaemon
 
 import "github.com/kardianos/osext"
 

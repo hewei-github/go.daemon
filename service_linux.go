@@ -1,4 +1,4 @@
-package service
+package godaemon
 
 import (
 	"fmt"
